@@ -1,0 +1,3 @@
+# a postgres mappa és tartalmának figyelmen kívül hagyása
+inc/pg-init.php
+

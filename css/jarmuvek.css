@@ -1,0 +1,232 @@
+/* jmu css */
+
+@media screen {
+   
+  body {
+    font-family: "Times New Roman", Helvetica, serif;
+    font-size:18px;
+  }
+  header {
+    border-bottom:1px solid navy;
+    background-color:gold;
+    border-radius:3em;
+  }
+  header h1,h2{
+    color:navy;
+    text-align:center;
+    margin:0.125em;
+  }
+  header h1 {
+    font-size:100%;
+    font-weight:bold;
+  }
+  header h2 {
+    font-size:80%;
+    font-weight:normal;
+  }
+  footer p {
+    color:#eee;
+    border:1px solid #eee;
+    border-radius:1em;
+    font-size:12px;
+    text-align:center;
+    margin:1em auto;
+  }
+  nav {
+    text-align:center;
+  }
+
+
+
+  .ok {
+    border:1px solid #B5F3A2;
+    border-radius:10px;
+    font-size:22px;
+    font-weight:bold;
+    background-color:#B5F3A2;
+    width:30em;
+    padding:0.5em;
+    margin:0.5em auto;
+    text-align:center;
+    color:#009933;
+  }
+  .warn {
+    border:1px solid  #f3ff66;
+    border-radius:10px;
+    font-size:22px;
+    font-weight:bold;
+    background-color:#f3ff66;
+    color:#F18200;
+    width:30em;
+    margin:0.5em auto;
+    padding:0.5em;
+    text-align:center;
+  }
+  .err {
+    border:1px solid #FFBFAF;
+    border-radius:10px;
+    font-size:22px;
+    font-weight:bold;
+    background-color:#FFBFAF;
+    width:30em;
+    padding:0.5em;
+    margin:0.5em auto;
+    text-align:center;
+    color:#FF0000;
+  }
+  .btn-menu {
+    margin:0.5em;
+    padding:0.25em 0.5em;
+    border:1px solid #525252;
+    border-radius:15px;
+    background-color:#525252;
+    color:#FFF;
+    text-decoration:none;
+  }
+  .btn {
+      margin:0.75em 0.25em;
+      display:inline;
+  }
+  .btn-back {
+    font-size:0.75em;
+    text-decoration:none;
+    padding:0.25em 0.25em;
+    border:2px solid #003E7A;
+    border-radius:1em;
+    background-color:#003E7A;
+    color:#FFFFFF;   
+  }
+  .btn-exit {
+    font-size:0.75em;
+    text-decoration:none;
+    padding:0.25em 0.5em;
+    border:2px solid red;
+    border-radius:1em;
+    background-color:red;
+    color:#FFFFFF;
+  }
+  .btn-print {
+    font-size:0.75em;
+    text-decoration:none;
+    padding:0.25em 0.25em;
+    border:2px solid #555;
+    border-radius:1em;
+    background-color:#555;
+    color:#FFFFFF;
+  }
+  .btn-login, .btn-logout {
+    font-size:0.75em;
+    text-decoration:none;
+    padding:0.25em 0.25em;
+    border:2px solid #004900;
+    border-radius:1em;
+    background-color:#004900;
+    color:#FFFFFF;   
+  }
+  .jmu-info-table {
+    margin:1em auto;
+    font-size:16px;
+    font-family:Helvetica, Lucidia, sans-serif 
+  }
+  .tdc5p {
+    text-align:center;
+    padding:5px;
+  }
+  .tdr5p-b {
+    text-align:right;
+    padding:5px;
+    font-weight:bold;
+  }
+  .tdc {
+    text-align:center;
+  }
+  .tdr {
+    text-align:right;
+  }
+  .tdl {
+    text-align:left;
+  }
+  .link-info {
+    background-color:#003E7A;
+    color:white;
+    font-size:120%;
+    font-weight:bold;
+    text-decoration:none;
+    padding:0.125em 0.5em;
+    border-radius:0.75em;
+    border:1px solid #003E7A;
+  }
+  .code14 {
+    font-size:14px;
+  }
+  .separator {
+   color:#ccc;
+   border:1px solid #ccc;
+   border-radius:2px; 
+  }
+  .tbl-ujjmu {
+    border:1px solid #555;
+    border-collapse:collapse;
+  }
+  
+/*
+* @media screen vége
+*/
+}
+
+/*
+* @media print - nyomtatóbarát css
+*/
+@media print {
+  body{
+    color:black;
+    background-color:white;
+    font-size:12px;
+    font-family:"Times New Roman","Times",Helvetica,serif;
+  }
+  .btn, .btn-menu, .btn-back, .btn-exit, .btn-print, footer p , a {
+    display:none;
+  }
+  .jmu-info-table {
+    width:90%;
+    margin: 0px 8px;
+    font-size:12px;
+  }
+  .jmu-info-table td, .tdc5p {
+    font-size:10px;
+    text-align:center;
+    font-family:serif, Helvetica, "Times New Roman"
+  }
+  .tdr5p-b {
+      font-size:10px;
+      text-align:center;
+      font-family:serif, Helvetica, "Times New Roman";
+      text-align:right;
+      font-weight:bold;
+  }
+ 
+ 
+ 
+  header h1 {
+    font-size:14px;
+    font-weight:bold;
+  }
+  header h2 {
+    font-size:12px;
+    font-weight:bold;
+  }
+  .code14 {
+    font-size:8px;
+    color:#888;
+  }
+  
+  
+/*
+* @media print vége
+*/  
+  
+}
+
+
+
+
