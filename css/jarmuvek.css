@@ -208,17 +208,26 @@
  
  
   header h1 {
+    display:inline;
+    width:33%;
+    float:left;
     font-size:14px;
     font-weight:bold;
     text-align:left;
   }
   header h2 {
+    display:inline;
+    width:33%;
+		float:left;
     font-size:12px;
     font-weight:bold;
-    text-align:right;
+    text-align:center;
   }
-  header h1, header h2 {
-    display:inline;
+  .ok {
+    width:33%;
+    float:left;
+    font-size:12px;
+    text-align:right;
   }
   .code14 {
     font-size:8px;
