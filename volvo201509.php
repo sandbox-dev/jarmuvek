@@ -48,6 +48,7 @@ if ($res) {
       </tr>";
     }
     echo "</table>";
+    $h->btnMenu(array("Átfutási idők - diagram"=>"volvo201509diagram.php"));
   }
   else {
     $h->msgWarn("A kérés nem hozott eredményt!");
