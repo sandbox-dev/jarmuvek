@@ -95,7 +95,7 @@ public function msgOk($msg) {
  */
 // Vissza gomb
 public function btnBack() {
-  echo "<p class='btn'><a class='btn-back' href='index.php'>Vissza</a></p>";
+  echo "<p class='btn'><a class='btn-back' href='index.php'>Vissza a főmenühöz</a></p>";
 }
 // Kilép gomb
 public function btnExit() {
@@ -111,7 +111,7 @@ public function btnExit() {
 public function btnPrint() {
   echo "<p class='btn'><a class='btn-print' href='javascript:window.print();'>Nyomtatás</a></p>";  
 }  
-// Főmenü gombjai
+// Főmenü és almenü gombjai
 public function btnMenu($menu) {
   echo "<p>";
   foreach ($menu as $title => $href) {
