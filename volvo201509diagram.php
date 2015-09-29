@@ -17,6 +17,16 @@ $h->header("2015. szeptember Volvo diagram");
 
 $h->msgOk("2015. szeptemberi Volvo buszok átfutási idő diagramja");
 
+$h->btnMenu(array("Vissza a 2015. szeptemberi Volvo dátumokhoz"=>"volvo201509.php"));
+
+// átlag átfutási idő meghatározása
+$sql  = "select (avg(vegatvetel-erkezett)::int) as atlag from jarmu_alap ";
+$sql .= "where psz ilike 'ncz%' and sorszam < 2000;";
+
+$res = $pg->query($sql);
+$row = $res->fetch(PDO::FETCH_BOTH);
+$avgTime = $row[0];
+
 $sql  = "select sorszam, substring(psz,1,6) as rendszam, erkezett, ";
 $sql .= "vegatvetel, vegatvetel-erkezett as nap from jarmu_alap ";
 $sql .= "where psz ilike'ncz%' and sorszam<2000 order by 1;";
@@ -28,7 +38,7 @@ echo "<tr>
       <th>Sorszám</th>
       <th>Rendszám</th>
       <th>Dátumok</th>
-      <th>Átfutási idő (1 &middot; = 1 nap)</th>
+      <th>Átfutási idő (1 &middot; = 1 nap, átlag átfutási idő: $avgTime nap)</th>
       </tr>";
 
 while ($row = $res->fetch(PDO::FETCH_BOTH)) {
@@ -38,13 +48,18 @@ while ($row = $res->fetch(PDO::FETCH_BOTH)) {
         <td>$row[2] &dash; $row[3] &mdash; $row[4] nap</td>
         <td>";
           for ($i=0; $i<$row[4]; $i++) {
-            echo "<b>&middot;</b>";
-          }
+            if ($i < $avgTime) {
+              echo "<b style='color:#007D00;'>&middot;</b>";
+            }
+            else {
+              echo "<b style='color:#CA0000;'>&middot;</b>";
+            }
+          }  // pontok ciklus vége
   echo "</td>
         </tr>";
 }
 echo "</table>";
-$h->btnMenu(array("Vissza a 2015. szeptemberi Volvo dátumokhoz"=>"volvo201509.php"));
+
 
 // Elválasztó
 $h->separator();
