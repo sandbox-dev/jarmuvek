@@ -15,6 +15,10 @@ $h = new Html();
 // Html fejléc
 $h->header("2015. szeptember - Volvo");
 
+$h->msgOk("Volvo dátumok");
+
+$h->btnMenu(array("Átfutási idők - diagram"=>"volvo201509diagram.php"));
+
 $sql =  "select substring(psz,1,6) as rsz, substring(psz,7,4) as asz, ";
 $sql .= "sorszam, erkezett, allapotfelvetel, reszatvetel, vegatvetel, hazaadas ";
 $sql .= "from jarmu_alap where psz ilike'ncz%' and ev=2015 order by sorszam";
@@ -23,7 +27,6 @@ $res = $pg->query($sql);
 $count = $res->rowCount();
 if ($res) {
   if ($count) {
-    $h->msgOk("Volvo dátumok");
     echo "<table class='jmu-info-table' border=1 style='border-collapse:collapse'>";
     echo "<tr>
     <th>Rendszám</th>
@@ -48,7 +51,7 @@ if ($res) {
       </tr>";
     }
     echo "</table>";
-    $h->btnMenu(array("Átfutási idők - diagram"=>"volvo201509diagram.php"));
+    
   }
   else {
     $h->msgWarn("A kérés nem hozott eredményt!");
