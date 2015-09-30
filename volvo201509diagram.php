@@ -17,7 +17,8 @@ $h->header("2015. szeptember Volvo diagram");
 
 $h->msgOk("2015. szeptemberi Volvo buszok átfutási idő diagramja");
 
-$h->btnMenu(array("Vissza a 2015. szeptemberi Volvo dátumokhoz"=>"volvo201509.php"));
+$h->btnMenu(array("Vissza a 2015. szeptemberi Volvo dátumokhoz"=>"volvo201509.php",
+                   "Vissza a főmenühöz"=>"index.php"));
 
 // átlag átfutási idő meghatározása
 $sql  = "select (avg(vegatvetel-erkezett)::int) as atlag from jarmu_alap ";

@@ -17,7 +17,8 @@ $h->header("2015. szeptember - Volvo");
 
 $h->msgOk("Volvo dátumok");
 
-$h->btnMenu(array("Átfutási idők - diagram"=>"volvo201509diagram.php"));
+$h->btnMenu(array("Átfutási idők - diagram"=>"volvo201509diagram.php",
+                   "Vissza a főmenühöz"=>"index.php"));
 
 $sql =  "select substring(psz,1,6) as rsz, substring(psz,7,4) as asz, ";
 $sql .= "sorszam, erkezett, allapotfelvetel, reszatvetel, vegatvetel, hazaadas ";
