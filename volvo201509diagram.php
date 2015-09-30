@@ -38,7 +38,7 @@ echo "<tr>
       <th>Sorszám</th>
       <th>Rendszám</th>
       <th>Dátumok</th>
-      <th>Átfutási idő (1 &middot; = 1 nap, átlag átfutási idő: $avgTime nap)</th>
+      <th>Átfutási idő (1 &diams; = 1 nap, átlag átfutási idő: $avgTime nap)</th>
       </tr>";
 
 while ($row = $res->fetch(PDO::FETCH_BOTH)) {
