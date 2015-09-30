@@ -45,16 +45,18 @@ while ($row = $res->fetch(PDO::FETCH_BOTH)) {
   echo "<tr>
         <td>$row[0]</td>
         <td>$row[1]</td> 
-        <td>$row[2] &dash; $row[3] &mdash; $row[4] nap</td>
+        <td>$row[2] &dash; $row[3] &dash; $row[4] nap</td>
         <td>";
           for ($i=0; $i<$row[4]; $i++) {
+
             if ($i < $avgTime) {
-              echo "<b style='color:#007D00;'>&middot;</b>";
+              echo "<b style='color:#007D00;font-size:75%;'>&diams;</b>";
             }
             else {
-              echo "<b style='color:#CA0000;'>&middot;</b>";
+              echo "<b style='color:#CA0000;font-size:75%;'>&diams;</b>";
             }
           }  // pontok ciklus vége
+
   echo "</td>
         </tr>";
 }
