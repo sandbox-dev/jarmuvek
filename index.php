@@ -1,13 +1,96 @@
 <?php
-require_once 'inc/session-timeout.php';
-session_start();
+try {
+  if(file_exists('inc/session-timeout.php')) {
+    require_once 'inc/session-timeout.php';
+    session_start();
+  }
+  else {
+    throw new Exception("Egy szükséges fájl nem érhető el!");
+  }
+}
+catch (Exception $e) {
+echo "<!doctype html>
+<!doctype html>
+<html lang=hu>
+<head>
+<meta charset='utf-8' />
+<link rel='stylesheet' href='css/jarmuvek.css' media='screen, print'/>
+<link rel='shortcut icon' href='icon/favicon.ico' type='image/x-icon'>
+<link rel='icon' href='icon/favicon.ico' type='image/x-icon'>
+<meta name=viewport content='width=device-width, initial-scale=1'>
+<title>Hiba!</title>
+<body>
+<h1 style='background-color:#FF928D;color:red;width:33%;text-align:center;margin:15em auto;'>
+$e->getMessage();
+</h1>
+</body>
+</html>
+";
+exit;
+}
+
+try {
+  if (file_exists('inc/pg-init.php')) {
+    require_once 'inc/pg-init.php';
+  }
+  else {
+    throw new Exception("Egy szükséges fájl nem érhető el!");
+  }
+}
+catch (Exception $e) {
+echo "<!doctype html>
+<!doctype html>
+<html lang=hu>
+<head>
+<meta charset='utf-8' />
+<link rel='stylesheet' href='css/jarmuvek.css' media='screen, print'/>
+<link rel='shortcut icon' href='icon/favicon.ico' type='image/x-icon'>
+<link rel='icon' href='icon/favicon.ico' type='image/x-icon'>
+<meta name=viewport content='width=device-width, initial-scale=1'>
+<title>Hiba!$title</title>
+<body>
+<h1 style='background-color:#FF928D;color:red;width:33%;text-align:center;margin:15em auto;'>
+$e->getMessage();
+</h1>
+</body>
+</html>
+";
+exit;
+}
+
+try {
+  if (file_exists('class/class.Html.php')) {
+    require_once 'class/class.Html.php';
+  }
+  else {
+    throw new Exception("Egy szükséges fájl nem érhető el!");
+  }
+}
+catch (Exception $e) {
+echo "<!doctype html>
+<!doctype html>
+<html lang=hu>
+<head>
+<meta charset='utf-8' />
+<link rel='stylesheet' href='css/jarmuvek.css' media='screen, print'/>
+<link rel='shortcut icon' href='icon/favicon.ico' type='image/x-icon'>
+<link rel='icon' href='icon/favicon.ico' type='image/x-icon'>
+<meta name=viewport content='width=device-width, initial-scale=1'>
+<title>Hiba!$title</title>
+<body>
+<h1 style='background-color:#FF928D;color:red;width:33%;text-align:center;margin:15em auto;'>
+$e->getMessage();
+</h1>
+</body>
+</html>
+";
+exit;
+}
+
 
 // Kimenet tárazása
 ob_start();
 
-// Csatlakozás az adatbázishoz.
-require_once 'inc/pg-init.php';
-require_once 'class/class.Html.php';
 
 // Html példány:
 $h = new Html();
