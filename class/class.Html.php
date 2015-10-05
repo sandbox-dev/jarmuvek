@@ -47,7 +47,7 @@ function sleep(milliseconds) {
 <h2>Járműjavítás információs rendszere</h2>
 </header>
 EOL;
-}
+} // END function header
 
 /*
  * Html lábléc.
@@ -61,7 +61,7 @@ echo <<<EOL
 </body>
 </html>
 EOL;
-}
+} // END function footer
 
 public function abortFooter() {
 echo <<<EOL
@@ -72,7 +72,7 @@ echo <<<EOL
 </html>
 EOL;
 exit;
-}
+} // END function abortFooter
 
 /*
  * Üzenetek
@@ -82,13 +82,15 @@ exit;
  */  
 public function msgErr($msg) {
   echo "<p class='err'>$msg</p>";
-}
+} // END function msgErr
+
 public function msgWarn($msg) {
   echo "<p class='warn'>$msg</p>"; 
-}
+} // END function msgWarn
+
 public function msgOk($msg) {
   echo "<p class='ok'>$msg</p>";
-}
+} //END function msgOK
 
 /*
  * Gombok, gombképek
@@ -96,7 +98,9 @@ public function msgOk($msg) {
 // Vissza gomb
 public function btnBack() {
   echo "<p class='btn'><a class='btn-back' href='index.php'>Vissza a főmenühöz</a></p>";
-}
+} // END function btnBack
+
+
 // Kilép gomb
 public function btnExit() {
     $ip = $_SERVER['SERVER_ADDR'];
@@ -106,11 +110,13 @@ public function btnExit() {
     else {
       echo "<p class='btn'><a class='btn-exit' href='http://192.168.100.155/index.php'>Kilépés</a></p>";
     }
-}
+} // END function btnExit
+
 // Nyomtatás gomb
 public function btnPrint() {
   echo "<p class='btn'><a class='btn-print' href='javascript:window.print();'>Nyomtatás</a></p>";  
-}  
+} // END function btnPrint  
+
 // Főmenü és almenü gombjai
 public function btnMenu($menu) {
   echo "<p>";
@@ -118,7 +124,8 @@ public function btnMenu($menu) {
     echo "<a class='btn-menu' href='$href'>$title</a>";
   }
   echo "</p>";
-}  
+} // END function btnMenu  
+
 // Ki és bejelentkezés gombja
 private function login() {
   if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
@@ -128,22 +135,21 @@ private function login() {
   else {
     echo "<p class='btn'><a class='btn-login' href='login.php'>Bejelentkezés</a></p>";
   }
-}
+} // END function login
 
 // Menü és tartalom közötti elválasztó vonal
 public function separator() {
   echo "<p class='separator'></p>";
-}  
+} // END function separator
 
+// javascript oldalváltások
+public function redirect($url) {
+  echo '<script>window.location.assign("'.$url.'");</script>';
+} // END function redirect
+  
+  
+  
 
-  
-  
-  
-  
-  
-/*
- * class Html vége
- */  
-}
+} // END Html
 
 ?>

@@ -1,11 +1,7 @@
 <?php
-// Kimenet tárazása
-
-session_start();
-
-// Csatlakozás az adatbázishoz.
-require_once 'inc/pg-init.php';
-require_once 'class/class.Html.php';
+require_once 'autoloader.php';
+new Autoloader();
+$pg = Pg::getPg();
 
 // Html példány:
 $h = new Html();

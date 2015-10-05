@@ -1,13 +1,11 @@
 <?php
-require_once 'inc/session-timeout.php';
-session_start();
+require_once "autoloader.php";
+new Autoloader();
+$pg = Pg::getPg();
 
 // Kimenet tárazása
 ob_start();
 
-// Csatlakozás az adatbázishoz.
-require_once 'inc/pg-init.php';
-require_once 'class/class.Html.php';
 
 // Html példány:
 $h = new Html();

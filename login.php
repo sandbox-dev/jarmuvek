@@ -1,11 +1,7 @@
 <?php
-// Kimenet tárazása
-require_once 'inc/session-timeout.php';
-session_start();
-
-// Csatlakozás az adatbázishoz.
-require_once 'inc/pg-init.php';
-require_once 'class/class.Html.php';
+require_once 'autoloader.php';
+new Autoloader();
+$pg = Pg::getPg();
 
 // Html példány:
 $h = new Html();
@@ -13,7 +9,8 @@ $h = new Html();
 
 
 // Html fejléc
-$h->header("Járművek - Bejelentkezés");
+$h->header("Bejelentkezés");
+$h->msgErr("Bejelentkezés");
 
 // Bejelentkezés űrlap ellenőrzése
 if (isset($_POST['login']) && $_POST['login'] == 'Bejelentkezés') {
@@ -38,7 +35,8 @@ if (isset($_POST['login']) && $_POST['login'] == 'Bejelentkezés') {
 
 
 ?>
-<form method='post' action='login.php'>
+
+<form method='post' action='login.php' autocomplete='off'>
 <p>
 <label for='username'>
 <input style='font-size:100%' type='text' name='username' placeholder='felhasználónév' required/>
