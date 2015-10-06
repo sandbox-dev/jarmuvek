@@ -51,10 +51,10 @@ while ($row = $res->fetch(PDO::FETCH_BOTH)) {
         <td>$row[2] &dash; $row[3] &dash; $row[4] nap</td>
         <td>";
           for ($i=0; $i<$row[4]; $i++) {
-            if ($i <= $plannedTime) {
+            if ($i < $plannedTime) {
               echo "<b style='color:#007D00;font-size:75%;'>&diams;</b>";
             }
-            if ($i > $plannedTime and $i <= $avgTime) {
+            if ($i >= $plannedTime and $i <= $avgTime) {
               echo "<b style='color:#f80;font-size:75%;'>&diams;</b>";
             }
             if ($i > $avgTime) {
