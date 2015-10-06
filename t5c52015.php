@@ -15,9 +15,9 @@ ob_start();
 $h = new Html();
 
 // Html fejléc
-$h->header("2015. szeptember - Volvo");
+$h->header("2015.  - T5C5");
 
-$h->msgOk("Volvo dátumok");
+$h->msgOk("2015. évi T5C5  dátumok");
 
 $h->btnMenu(array("Átfutási idők - diagram"=>"t5c52015diagram.php",
                    "Vissza a főmenühöz"=>"index.php"));
