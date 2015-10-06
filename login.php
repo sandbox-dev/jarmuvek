@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'autoloader.php';
 new Autoloader();
 $pg = Pg::getPg();
@@ -24,13 +25,13 @@ if (isset($_POST['login']) && $_POST['login'] == 'Bejelentkezés') {
   else {
     $h->msgOk("Sikeres bejelentkezés");
     $_SESSION['login'] = true;
-    echo '<script>sleep(1000);window.location.assign("index.php");</script>';
     $sql = "select nev,jog from felhasznalo where id='$_POST[username]'";
     $res = $pg->query($sql);
     $row = $res->fetch(PDO::FETCH_BOTH);
     $_SESSION['userFullName'] = $row[0];
     $_SESSION['userAuth'] = $row[1];
   }
+  $h->redirect("index.php");
 }
 
 

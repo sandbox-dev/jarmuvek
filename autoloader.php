@@ -21,7 +21,6 @@ class Autoloader {
   const PG_INIT = "inc/pg-init.php";
   
   private static $classes = array(
-  "Session"=>"Hiányzik a Session osztály!",
   "Html"=>"Hiányzik a megjelenítést vezérlő osztály!",
   "Pg"=>"Hiányzik az adatbázis kapcsoló fájl!"
   );

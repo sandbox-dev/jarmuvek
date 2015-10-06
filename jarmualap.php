@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "autoloader.php";
 new Autoloader();
 $pg = Pg::getPg();
