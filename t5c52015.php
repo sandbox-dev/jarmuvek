@@ -31,7 +31,7 @@ $count = $res->rowCount();
 if ($res) {
   if ($count) {
     echo "<table class='jmu-info-table' border=1 style='border-collapse:collapse'>";
-    echo "<caption>2015. évi T5C5 kocsik</caption>";
+    $h->infoTableCaption("2015. évi T5C5 kocsik");
     echo "<tr>
     <th>Pályaszám</th>
     <th>Sorszám</th>

@@ -31,6 +31,7 @@ $count = $res->rowCount();
 if ($res) {
   if ($count) {
     echo "<table class='jmu-info-table' border=1 style='border-collapse:collapse'>";
+    $h->infoTableCaption("2015. év szeptemberi Volvo buszok");
     echo "<tr>
     <th>Rendszám</th>
     <th>Egyedi szám</th>

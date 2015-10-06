@@ -37,6 +37,7 @@ $sql .= "where ev=2015 and jarmutipus ilike 't5c5k2mod' order by 1;";
 $res = $pg->query($sql);
 
 echo "<table border='1' style='border-collapse:collapse;'>";
+$h->infoTableCaptionDiagram("2015. évi T5C5 kocsik átfutási idő diagramja");
 echo "<tr>
       <th>Sorszám</th>
       <th>Rendszám</th>

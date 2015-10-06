@@ -147,8 +147,19 @@ public function redirect($url) {
   echo '<script>window.location.assign("'.$url.'");</script>';
 } // END function redirect
   
+// Jármű infó táblák fejléce
+public function infoTableCaption($caption) {
+  echo "<caption><b>$caption</b></caption>";
+}
   
-  
+public function infoTableCaptionDiagram($caption) {
+  echo "<caption>
+        <b>$caption</b><br>
+        <span style='color:#007D00;font-size:150%;'>&diams;</span> tervezett átfutási időn belül napok
+        <span style='color:#f80;font-size:150%;'>&diams;</span> tervezett és átlagos átfutási idő közötti napok,
+        <span style='color:#CA0000;font-size:150%;'>&diams;</span> átlagos átfutási idő feletti napok
+      </caption>";
+}
 
 } // END Html
 

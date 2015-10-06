@@ -37,6 +37,7 @@ $sql .= "where psz ilike'ncz%' and sorszam<2000 order by 1;";
 $res = $pg->query($sql);
 
 echo "<table border='1' style='border-collapse:collapse;'>";
+$h->infoTableCaptionDiagram("2015. év szeptemberi Volvo buszok átfutási idő diagramja");
 echo "<tr>
       <th>Sorszám</th>
       <th>Rendszám</th>
