@@ -1,4 +1,4 @@
-jarmutipus,ev,sorszam,psz,esz,sd_al,sd_op,pp_al,pp_op,erkezett,munkabavetel,allapotfelvetel,reszatvetel,vegatvetel,hazaadas,szamlazas,megjegyzes,id
+jarmutipus,ev,sorszam,psz,esz,sd_al,sd_op,pp_al,pp_op,erkezett,munkabavetel,allapotfelvetel,reszatvetel,vegatvetel,hazaadas,szamlazas,megjegyzes,terv_atfutasi_ido,id
 T5C5K2MOD,2014,1,4043,NULL,20001715,NULL,71018361,NULL,2014.01.30,NULL,2014.05.23,2014.06.20,2014.11.15,2014.11.20,NULL,NULL,98,1
 T5C5K2MOD,2014,2,4042,NULL,20001711,NULL,71018359,NULL,2014.01.30,NULL,2014.05.20,2014.06.20,2014.11.15,2014.11.20,NULL,NULL,98,2
 T5C5K2MOD,2014,3,4079,NULL,20001756,NULL,71018459,NULL,2014.04.28,NULL,2014.06.18,2014.06.26,2014.11.22,2014.11.24,NULL,NULL,98,3
