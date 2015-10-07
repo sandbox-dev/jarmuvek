@@ -1,5 +1,5 @@
 <?php
-
+// Ez egy próba, hogyan meg más tárolóból az átemelés...
 require_once "autoloader.php";
 
 new Autoloader();
