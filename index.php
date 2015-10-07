@@ -15,8 +15,8 @@ $h->header("Járművek");
 $menu = array (
 'Járművek alapadatai'=>'jarmualap.php',
 '2015. évi szeptemberi Volvok'=>'volvo201509.php',
-'2015.évi T5C5 kocsik'=>'t5c52015.php',
-'2015.évi TW6000 kocsik'=>'tw60002015.php'
+'2015. évi T5C5 kocsik'=>'t5c52015.php',
+'2015. évi TW6000 kocsik'=>'tw60002015.php'
 );
 $h->btnMenu($menu);
 $h->separator();
