@@ -27,11 +27,16 @@ $sql .= "where ev=2015 and jarmutipus ilike 't5c5k2mod' ";
 $res = $pg->query($sql);
 $row = $res->fetch(PDO::FETCH_BOTH);
 $avgTime = $row[0];
+
 // Tervezett Átfutási idő:
-$plannedTime = 90;
+$sql = "select avg(terv_atfutasi_ido)::int from jarmu_alap where ";
+$sql .= "ev=2015 and jarmutipus ilike 't5c5k2mod' ";
+$res = $pg->query($sql);
+$plannedTime = $res->fetch(PDO::FETCH_BOTH)[0];
+
 
 $sql  = "select sorszam, psz, erkezett, ";
-$sql .= "vegatvetel, vegatvetel-erkezett as nap from jarmu_alap ";
+$sql .= "vegatvetel, vegatvetel-erkezett as nap, terv_atfutasi_ido from jarmu_alap ";
 $sql .= "where ev=2015 and jarmutipus ilike 't5c5k2mod' order by 1;";
 
 $res = $pg->query($sql);
@@ -42,7 +47,7 @@ echo "<tr>
       <th>Sorszám</th>
       <th>Rendszám</th>
       <th>Dátumok</th>
-      <th>Átfutási idő (1 &diams; = 1 nap, átlag átfutási idő: $avgTime nap, tervezett átfutási idő 90 nap.)</th>
+      <th>Átfutási idő (1 &diams; = 1 nap, átlag átfutási idő: $avgTime nap, tervezett átfutási idő $plannedTime nap.)</th>
       </tr>";
 
 while ($row = $res->fetch(PDO::FETCH_BOTH)) {
@@ -52,10 +57,10 @@ while ($row = $res->fetch(PDO::FETCH_BOTH)) {
         <td>$row[2] &dash; $row[3] &dash; $row[4] nap</td>
         <td>";
           for ($i=0; $i<$row[4]; $i++) {
-            if ($i < $plannedTime) {
+            if ($i < $row[5]) {
               echo "<b style='color:#007D00;font-size:75%;'>&diams;</b>";
             }
-            if ($i >= $plannedTime and $i <= $avgTime) {
+            if ($i >= $row[5] and $i <= $avgTime) {
               echo "<b style='color:#f80;font-size:75%;'>&diams;</b>";
             }
             if ($i > $avgTime) {

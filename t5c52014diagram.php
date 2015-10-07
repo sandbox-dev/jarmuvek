@@ -28,10 +28,13 @@ $res = $pg->query($sql);
 $row = $res->fetch(PDO::FETCH_BOTH);
 $avgTime = $row[0];
 // Tervezett Átfutási idő:
-$plannedTime = 90;
+$sql = "select avg(terv_atfutasi_ido)::int from jarmu_alap where ";
+$sql .= "ev=2014 and jarmutipus ilike 't5c5k2mod' ";
+$res = $pg->query($sql);
+$plannedTime = $res->fetch(PDO::FETCH_BOTH)[0];
 
 $sql  = "select sorszam, psz, erkezett, ";
-$sql .= "vegatvetel, vegatvetel-erkezett as nap from jarmu_alap ";
+$sql .= "vegatvetel, vegatvetel-erkezett as nap, terv_atfutasi_ido from jarmu_alap ";
 $sql .= "where ev=2014 and jarmutipus ilike 't5c5k2mod' order by 1;";
 
 $res = $pg->query($sql);

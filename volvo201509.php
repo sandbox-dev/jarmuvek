@@ -22,8 +22,8 @@ $h->msgOk("Volvo dátumok");
 $h->btnMenu(array("Átfutási idők - diagram"=>"volvo201509diagram.php",
                    "Vissza a főmenühöz"=>"index.php"));
 
-$sql =  "select substring(psz,1,6) as rsz, substring(psz,7,4) as asz, ";
-$sql .= "sorszam, erkezett, allapotfelvetel, reszatvetel, vegatvetel, hazaadas ";
+$sql =  "select psz, esz, sorszam, erkezett, allapotfelvetel,";
+$sql .= " vegatvetel, hazaadas, szamlazas, megjegyzes ";
 $sql .= "from jarmu_alap where psz ilike'ncz%' and ev=2015 order by sorszam";
 $res = $pg->query($sql);
 // Van-e visszaadott sor
@@ -41,6 +41,7 @@ if ($res) {
     <th>Végátvétel</th>
     <th>Hazaadás</th>
     <th>Számlázás</th>
+    <th>Megjegyzés</th>
     </tr>";
     while($row = $res->fetch(PDO::FETCH_BOTH)) {
       echo "<tr>
@@ -52,6 +53,7 @@ if ($res) {
       <td class='tdc5p'>$row[5]</td>
       <td class='tdc5p'>$row[6]</td>
       <td class='tdc5p'>$row[7]</td>
+      <td class='tdc5p'>$row[8]</td>
       </tr>";
     }
     echo "</table>";

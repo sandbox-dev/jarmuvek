@@ -23,7 +23,7 @@ $h->btnMenu(array("Átfutási idők - diagram"=>"t5c52015diagram.php",
                    "Vissza a főmenühöz"=>"index.php"));
 
 $sql =  "select psz, ";
-$sql .= "sorszam, erkezett, allapotfelvetel, reszatvetel, vegatvetel, hazaadas ";
+$sql .= "sorszam, erkezett, allapotfelvetel, reszatvetel, vegatvetel, hazaadas, megjegyzes ";
 $sql .= "from jarmu_alap where ev=2015 and jarmutipus ilike 't5c5k2mod' order by sorszam";
 $res = $pg->query($sql);
 // Van-e visszaadott sor
@@ -40,6 +40,7 @@ if ($res) {
     <th>Részátvétel</th>
     <th>Végátvétel</th>
     <th>Hazaadás</th>
+    <th>Megjegyzés</th>
     </tr>";
     while($row = $res->fetch(PDO::FETCH_BOTH)) {
       echo "<tr>
@@ -50,6 +51,7 @@ if ($res) {
       <td class='tdc5p'>$row[4]</td>
       <td class='tdc5p'>$row[5]</td>
       <td class='tdc5p'>$row[6]</td>
+      <td class='tdc5p'>$row[7]</td>
       </tr>";
     }
     echo "</table>";
