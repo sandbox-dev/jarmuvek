@@ -53,7 +53,7 @@ create table uj_jarmu_alap (
   hazaadas date constraint korai_hazaadas check(hazaadas >= erkezett),
   szamlazas date constraint korai_szamlazas check(szamlazas>=hazaadas),
   megjegyzes text default null,
-  terv_atfutas_ido integer not null, default 1,
+  terv_atfutasi_ido integer not null default 1,
   id integer default nextval('seq_uj_jarmu_alap') primary key,
   constraint letezo_pp_vagy_sd_rendelesek unique(sd_al,sd_op,pp_al,pp_op)
 )with oids;
