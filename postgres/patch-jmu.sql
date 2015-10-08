@@ -58,3 +58,27 @@ create table uj_jarmu_alap (
   constraint letezo_pp_vagy_sd_rendelesek unique(sd_al,sd_op,pp_al,pp_op)
 )with oids;
 
+-- jarmu_alap cseréjéhez
+create sequence seq_jarmu_alap start 1;
+create table jarmu_alap (
+  jarmutipus d_jarmutipus references tipus(id) on update cascade,
+  ev integer constraint ervenytelen_ev check(ev >= 2014),
+  sorszam integer constraint ervenytelen_sorszam check(sorszam > 0),
+  psz d_psz,
+  esz d_esz,
+  sd_al d_sap8 constraint mar_letezo_sd_al_rendeles unique,
+  sd_op d_sap8 constraint mar_letezo_sd_op_rendeles unique,
+  pp_al d_sap8 constraint mar_letezo_pp_al_rendeles unique,
+  pp_op d_sap8 constraint mar_letezo_pp_op_rendeles unique,
+  erkezett date,
+  munkabavetel date constraint korai_munkabavetel check(munkabavetel >= erkezett),
+  allapotfelvetel date constraint korai_allapotfelvetel check(allapotfelvetel >= erkezett),
+  reszatvetel date constraint korai_reszszamla check(reszatvetel >= erkezett),
+  vegatvetel date constraint korai_vegatvetel check(vegatvetel >= erkezett),
+  hazaadas date constraint korai_hazaadas check(hazaadas >= erkezett),
+  szamlazas date constraint korai_szamlazas check(szamlazas>=hazaadas),
+  megjegyzes text default null,
+  terv_atfutasi_ido integer not null default 1,
+  id integer default nextval('seq_jarmu_alap') primary key,
+  constraint letezo_pp_vagy_sd_rendelesek unique(sd_al,sd_op,pp_al,pp_op)
+)with oids;

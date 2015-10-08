@@ -24,6 +24,7 @@ $menu = array (
 '2014. évi T5C5 kocsik'=>'t5c52014.php'
 );
 $h->btnMenu($menu);
+$h->separator();
 if (isset($_SESSION['userAuth']) && $_SESSION['userAuth'] >=8) {
 // 2. sor menü
 $menu = array (
