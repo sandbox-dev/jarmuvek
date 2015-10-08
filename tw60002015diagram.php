@@ -17,7 +17,7 @@ $h->header("2015. évi TW6000 kocsik");
 
 $h->msgOk("2015. évi TW6000 kocsik átfutási idő diagramja");
 
-$h->btnMenu(array("Vissza a 2016. évi TW6000 kocsikhoz"=>"tw60002015.php",
+$h->btnMenu(array("Vissza a 2015. évi TW6000 kocsikhoz"=>"tw60002015.php",
                    "Vissza a főmenühöz"=>"index.php"));
 
 // átlag átfutási idő meghatározása
