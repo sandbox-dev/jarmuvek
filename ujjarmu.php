@@ -25,9 +25,9 @@ if (!isset($_SESSION['userAuth']) || $_SESSION['userAuth'] < 8) {
 
 // Úrlap feldolgozása
 if (isset($_POST['submit']) && $_POST['submit'] == 'Mentés') {
-  $sql  = "insert into uj_jarmu_alap(jarmutipus,ev,sorszam,psz,esz,sd_al,sd_op,";
+  $sql  = "insert into jarmu_alap(jarmutipus,ev,sorszam,psz,esz,sd_al,sd_op,";
   $sql .= "pp_al,pp_op,erkezett,munkabavetel,allapotfelvetel,reszatvetel,";
-  $sql .= "vegatvetel,hazaadas,szamlazas,megjegyzes)";
+  $sql .= "vegatvetel,hazaadas,szamlazas,megjegyzes,terv_atfutasi_ido)";
   $sql .= "values('$_POST[jarmutipus]',$_POST[ev],$_POST[sorszam],'$_POST[psz]',";
   ($_POST['esz'] == '') ? $sql .= "NULL," : $sql .= "'$_POST[esz]',";
   ($_POST['sd_al'] == '') ? $sql .= "NULL," : $sql .= "'$_POST[sd_al]',";
@@ -41,7 +41,8 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Mentés') {
   ($_POST['vegatvetel'] == '') ? $sql .= "NULL," : $sql .= "'$_POST[vegatvetel]',";
   ($_POST['hazaadas'] == '') ? $sql .= "NULL," : $sql .= "'$_POST[hazaadas]',";
   ($_POST['szamlazas'] == '') ? $sql .= "NULL," : $sql .= "'$_POST[szamlazas]',";
-  ($_POST['megjegyzes'] == '') ? $sql .= "NULL" : $sql .= "'$_POST[megjegyzes]'";
+  ($_POST['megjegyzes'] == '') ? $sql .= "NULL," : $sql .= "'$_POST[megjegyzes]',";
+  ($_POST['tervido'] == '') ? $sql .= "NULL" : $sql .= $_POST[tervido];
   $sql .= ")";
   $res = $pg->exec($sql);
   if ($res) {
@@ -152,6 +153,12 @@ echo "
 <tr>
 <td class='tdr'><label for='szamlazas'>Végszámla dátuma:</td>
 <td><input type='date' name='szamlazas' />
+</label></td>
+</tr>
+<tr>
+<tr>
+<td class='tdr'><label for='tervido'>Tervezett átfutási idő [nap]:</td>
+<td><input type='number' name='tervido' min='1' value='90' />
 </label></td>
 </tr>
 <tr>
