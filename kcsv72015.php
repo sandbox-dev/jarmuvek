@@ -5,6 +5,8 @@ new Autoloader();
 $pg = Pg::getPg();
 
 
+
+
 // Kimenet tárazása
 ob_start();
 
@@ -13,6 +15,8 @@ ob_start();
 
 // Html példány:
 $h = new Html();
+// vissza link
+$h->setBackRef();
 
 // Html fejléc
 $h->header("2015.  - KCSV-7");
@@ -22,8 +26,7 @@ $h->msgOk("2015. évi KCSV-7  dátumok");
 $h->btnMenu(array("Átfutási idők - diagram"=>"kcsv72015diagram.php",
                    "Vissza a főmenühöz"=>"index.php"));
 
-$sql =  "select psz, ";
-$sql .= "sorszam, erkezett, allapotfelvetel, reszatvetel, vegatvetel, hazaadas, megjegyzes ";
+$sql =  "select id, psz, sorszam, erkezett, allapotfelvetel, reszatvetel, vegatvetel, hazaadas, megjegyzes ";
 $sql .= "from jarmu_alap where ev=2015 and jarmutipus ilike 'kcsv%' order by sorszam";
 $res = $pg->query($sql);
 // Van-e visszaadott sor
@@ -43,8 +46,7 @@ if ($res) {
     <th>Megjegyzés</th>
     </tr>";
     while($row = $res->fetch(PDO::FETCH_BOTH)) {
-      echo "<tr>
-      <td class='tdc5p'>$row[0]</td>
+      echo "<tr onclick=jmuInfo($row[0]);>
       <td class='tdc5p'>$row[1]</td>
       <td class='tdc5p'>$row[2]</td>
       <td class='tdc5p'>$row[3]</td>
@@ -52,9 +54,11 @@ if ($res) {
       <td class='tdc5p'>$row[5]</td>
       <td class='tdc5p'>$row[6]</td>
       <td class='tdc5p'>$row[7]</td>
+      <td class='tdc5p'>$row[8]</td>
       </tr>";
     }
     echo "</table>";
+    
     
   }
   else {

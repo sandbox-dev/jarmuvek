@@ -11,6 +11,8 @@ ob_start();
 
 // Html példány:
 $h = new Html();
+// vissza link
+$h->setBackRef();
 
 // Html fejléc
 $h->header("2015. évi T5C5 kocsik");
@@ -36,7 +38,7 @@ $plannedTime = $res->fetch(PDO::FETCH_BOTH)[0];
 
 
 $sql  = "select sorszam, psz, erkezett, ";
-$sql .= "vegatvetel, vegatvetel-erkezett as nap, terv_atfutasi_ido from jarmu_alap ";
+$sql .= "vegatvetel, vegatvetel-erkezett as nap, terv_atfutasi_ido, id from jarmu_alap ";
 $sql .= "where ev=2015 and jarmutipus ilike 't5c5k2mod' order by 1;";
 
 $res = $pg->query($sql);
@@ -45,13 +47,13 @@ echo "<table border='1' style='border-collapse:collapse;'>";
 $h->infoTableCaptionDiagram("2015. évi T5C5 kocsik átfutási idő diagramja");
 echo "<tr>
       <th>Sorszám</th>
-      <th>Rendszám</th>
+      <th>Pályaszám</th>
       <th>Dátumok</th>
       <th>Átfutási idő (1 &diams; = 1 nap, átlag átfutási idő: $avgTime nap, tervezett átfutási idő $plannedTime nap.)</th>
       </tr>";
 
 while ($row = $res->fetch(PDO::FETCH_BOTH)) {
-  echo "<tr>
+  echo "<tr onclick=jmuInfo($row[6]);>
         <td>$row[0]</td>
         <td>$row[1]</td> 
         <td>$row[2] &dash; $row[3] &dash; $row[4] nap</td>

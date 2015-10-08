@@ -6,7 +6,9 @@ $pg = Pg::getPg();
 
 // Kimenet tárazása
 ob_start();
-
+if(!isset($_SESSION['backRef'])) {
+  $_SESSION['backRef'] = "index.php";
+}
 
 
 // Html példány:
@@ -32,28 +34,32 @@ if(isset($_GET['inf']) && trim($_GET['inf']) != '') {
             if ($count) {
                 $row = $res->fetch(PDO::FETCH_BOTH);
                 $h->msgOk("$row[3]&nbsp;&mdash;&nbsp;$row[0] alapadatok:");
+                
                 echo "<table class='jmu-info-table' border=1 style='border-collapse:collapse'>";
+                echo "<caption>";
+                $h->btnMenu(array("Vissza"=>"$_SESSION[backRef]"));
+                echo "</caption>";
                 //<tr><td class='tdr5p-b'>Járműtípus:</td><td class='tdc5p'>$row[0]</td></tr>
                 echo "
-                <tr><td class='tdr5p-b'>Év:</td><td class='tdc5p'>$row[1]</td></tr>
-                <tr><td class='tdr5p-b'>Sorszám:</td><td class='tdc5p'>$row[2]</td></tr>
-                <tr><td class='tdr5p-b'>Pályaszám:</td><td class='tdc5p'>$row[3]</td></tr>
-                <tr><td class='tdr5p-b'>Egyedi szám:</td><td class='tdc5p'>$row[4]</td></tr>
-                <tr><td class='tdr5p-b'>SD alap rendelés:</td><td class='tdc5p'>$row[5]</td></tr>
-                <tr><td class='tdr5p-b'>SD opció rendelés:</td><td class='tdc5p'>$row[6]</td></tr>
-                <tr><td class='tdr5p-b'>PP alap rendelés:</td><td class='tdc5p'>$row[7]</td></tr>
-                <tr><td class='tdr5p-b'>PP opció rendelés:</td><td class='tdc5p'>$row[8]</td></tr>
-                <tr><td class='tdr5p-b'>Beérkezés:</td><td class='tdc5p'>$row[9]</td></tr>
-                <tr><td class='tdr5p-b'>Munkábavétel:</td><td class='tdc5p'>$row[10]</td></tr>
-                <tr><td class='tdr5p-b'>Állapotfelvétel:</td><td class='tdc5p'>$row[11]</td></tr>
-                <tr><td class='tdr5p-b'>Részátvétel:</td><td class='tdc5p'>$row[12]</td></tr>
-                <tr><td class='tdr5p-b'>Végátvétel:</td><td class='tdc5p'>$row[13]</td></tr>
-                <tr><td class='tdr5p-b'>Hazaadás:</td><td class='tdc5p'>$row[14]</td></tr>
-                <tr><td class='tdr5p-b'>Számlázás:</td><td class='tdc5p'>$row[15]</td></tr>
-                <tr><td class='tdr5p-b'>Megjegyzés:</td><td class='tdc5p'>$row[16]</td></tr>
-                <tr><td class='tdr5p-b'>Tervezett átfutási idő:</td><td class='tdc5p'>$row[17]</td></tr>
-                <tr><td class='tdr5p-b'>Érkezéstől végátvételig [nap]:</td><td class='tdc5p'>$row[18]</td></tr>
-                <tr><td class='tdr5p-b'>Érkezéstől hazaadásig [nap]:</td><td class='tdc5p'>$row[19]</td></tr>
+                <tr><td class='tdr5p-b'>Év</td><td class='tdc5p'>$row[1]</td></tr>
+                <tr><td class='tdr5p-b'>Sorszám</td><td class='tdc5p'>$row[2]</td></tr>
+                <tr><td class='tdr5p-b'>Pályaszám</td><td class='tdc5p'>$row[3]</td></tr>
+                <tr><td class='tdr5p-b'>Egyedi szám</td><td class='tdc5p'>$row[4]</td></tr>
+                <tr><td class='tdr5p-b'>SD alap rendelés</td><td class='tdc5p'>$row[5]</td></tr>
+                <tr><td class='tdr5p-b'>SD opció rendelés</td><td class='tdc5p'>$row[6]</td></tr>
+                <tr><td class='tdr5p-b'>PP alap rendelés</td><td class='tdc5p'>$row[7]</td></tr>
+                <tr><td class='tdr5p-b'>PP opció rendelés</td><td class='tdc5p'>$row[8]</td></tr>
+                <tr><td class='tdr5p-b'>Beérkezés</td><td class='tdc5p'>$row[9]</td></tr>
+                <tr><td class='tdr5p-b'>Munkábavétel</td><td class='tdc5p'>$row[10]</td></tr>
+                <tr><td class='tdr5p-b'>Állapotfelvétel</td><td class='tdc5p'>$row[11]</td></tr>
+                <tr><td class='tdr5p-b'>Részátvétel</td><td class='tdc5p'>$row[12]</td></tr>
+                <tr><td class='tdr5p-b'>Végátvétel</td><td class='tdc5p'>$row[13]</td></tr>
+                <tr><td class='tdr5p-b'>Hazaadás</td><td class='tdc5p'>$row[14]</td></tr>
+                <tr><td class='tdr5p-b'>Számlázás</td><td class='tdc5p'>$row[15]</td></tr>
+                <tr><td class='tdr5p-b'>Megjegyzés</td><td class='tdc5p'>$row[16]</td></tr>
+                <tr><td class='tdr5p-b'>Tervezett átfutási idő</td><td class='tdc5p'>$row[17]</td></tr>
+                <tr><td class='tdr5p-b'>Érkezéstől végátvételig [nap]</td><td class='tdc5p'>$row[18]</td></tr>
+                <tr><td class='tdr5p-b'>Érkezéstől hazaadásig [nap]</td><td class='tdc5p'>$row[19]</td></tr>
                 </table>";
                 echo "<p>";
                   $h->btnMenu(array("Új jármű választás"=>"jarmualap.php"));

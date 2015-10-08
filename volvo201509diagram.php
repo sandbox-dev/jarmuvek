@@ -11,6 +11,8 @@ ob_start();
 
 // Html példány:
 $h = new Html();
+// vissza link
+$h->setBackRef();
 
 // Html fejléc
 $h->header("2015. szeptember Volvo diagram");
@@ -34,7 +36,7 @@ $res = $pg->query($sql);
 $plannedTime = $res->fetch(PDO::FETCH_BOTH)[0];
 
 $sql  = "select sorszam, substring(psz,1,6) as rendszam, erkezett, ";
-$sql .= "vegatvetel, vegatvetel-erkezett as nap, terv_atfutasi_ido from jarmu_alap ";
+$sql .= "vegatvetel, vegatvetel-erkezett as nap, terv_atfutasi_ido, id from jarmu_alap ";
 $sql .= "where psz ilike'ncz%' and sorszam<2000 order by 1;";
 
 $res = $pg->query($sql);
@@ -49,7 +51,7 @@ echo "<tr>
       </tr>";
 
 while ($row = $res->fetch(PDO::FETCH_BOTH)) {
-  echo "<tr>
+  echo "<tr onclick=jmuInfo($row[6]);>
         <td>$row[0]</td>
         <td>$row[1]</td> 
         <td>$row[2] &dash; $row[3] &dash; $row[4] nap</td>

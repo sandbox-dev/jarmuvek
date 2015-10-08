@@ -13,6 +13,8 @@ ob_start();
 
 // Html példány:
 $h = new Html();
+// vissza link
+$h->setBackRef();
 
 // Html fejléc
 $h->header("2015. szeptember - Volvo");
@@ -22,7 +24,7 @@ $h->msgOk("Volvo dátumok");
 $h->btnMenu(array("Átfutási idők - diagram"=>"volvo201509diagram.php",
                    "Vissza a főmenühöz"=>"index.php"));
 
-$sql =  "select psz, esz, sorszam, erkezett, allapotfelvetel,";
+$sql =  "select id, psz, esz, sorszam, erkezett, allapotfelvetel,";
 $sql .= " vegatvetel, hazaadas, szamlazas, megjegyzes ";
 $sql .= "from jarmu_alap where psz ilike'ncz%' and ev=2015 order by sorszam";
 $res = $pg->query($sql);
@@ -44,8 +46,7 @@ if ($res) {
     <th>Megjegyzés</th>
     </tr>";
     while($row = $res->fetch(PDO::FETCH_BOTH)) {
-      echo "<tr>
-      <td class='tdc5p'>$row[0]</td>
+      echo "<tr onclick=jmuInfo($row[0]);>
       <td class='tdc5p'>$row[1]</td>
       <td class='tdc5p'>$row[2]</td>
       <td class='tdc5p'>$row[3]</td>
@@ -54,6 +55,7 @@ if ($res) {
       <td class='tdc5p'>$row[6]</td>
       <td class='tdc5p'>$row[7]</td>
       <td class='tdc5p'>$row[8]</td>
+      <td class='tdc5p'>$row[9]</td>
       </tr>";
     }
     echo "</table>";

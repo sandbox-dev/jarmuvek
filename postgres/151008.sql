@@ -1,3 +1,8 @@
+\c gyuri
+drop database jmu;
+create database jmu;
+\c jmu
+
 --
 -- PostgreSQL database dump
 --

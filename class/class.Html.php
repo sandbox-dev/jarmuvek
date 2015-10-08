@@ -37,6 +37,10 @@ function sleep(milliseconds) {
   }
 }
 
+// jármű alapadatokra ugrik
+function jmuInfo(psz) {
+        window.location.assign("jarmualap.php?inf="+psz);
+    }
 
 
 </script>
@@ -159,6 +163,10 @@ public function infoTableCaptionDiagram($caption) {
         <span style='color:#f80;font-size:150%;'>&diams;</span> tervezett és átlagos átfutási idő közötti napok,
         <span style='color:#CA0000;font-size:150%;'>&diams;</span> átlagos átfutási idő feletti napok
       </caption>";
+}
+
+public function setBackRef() {
+  $_SESSION['backRef']=basename($_SERVER['SCRIPT_NAME']);
 }
 
 } // END Html
