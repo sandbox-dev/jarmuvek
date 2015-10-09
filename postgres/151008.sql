@@ -115,10 +115,10 @@ declare
 begin
     perform id from felhasznalo where md5(id)=md5($1);
     if not found then
-        return 1;
+        return 0;
     else
         update felhasznalo set jelszo=md5('init') where md5(id)=md5($1);
-        return 0;
+        return 1;
     end if;
 end;
 $_$;
