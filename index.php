@@ -7,6 +7,11 @@ $pg = Pg::getPg();
 // Html példány:
 $h = new Html();
 
+// alapértelmezett jelszó esetén ugrás az új jelszó megadására (ujjelszo.php)
+if(isset($_SESSION['userDefaultPassword']) && $_SESSION['userDefaultPassword']) {
+  $h->redirect('ujjelszo.php');  
+}
+
 // Html fejléc
 $h->header("Járművek");
 
@@ -26,13 +31,15 @@ $menu = array (
 );
 $h->btnMenu($menu);
 $h->separator();
-if (isset($_SESSION['userAuth']) && $_SESSION['userAuth'] >=8) {
+if (isset($_SESSION['userAuth']) && $_SESSION['userAuth'] >=8 ) {
 // 2. sor menü
 $menu = array (
 'Új jármű rögzítése'=>'ujjarmu.php',
+'Alapjelszó beállítása'=>'alapjelszo.php',
 );
 $h->btnMenu($menu);
 }
+
 // Elválasztó
 $h->separator();
 // Oldal alja gombok:

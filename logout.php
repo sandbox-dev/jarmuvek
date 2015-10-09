@@ -12,6 +12,7 @@ $h->header("Járművek - Kijelentkezés");
 
 // Kijelentkezés megerősítése rendben?
 if (isset($_GET['a'])) {
+  unset($_SESSION);
   session_destroy();
   $h->msgOk("A kijelentkezés megtörtént, a munkamenet lezárásra került.");
   $h->btnBack();

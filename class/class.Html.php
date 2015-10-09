@@ -39,8 +39,12 @@ function sleep(milliseconds) {
 
 // jármű alapadatokra ugrik
 function jmuInfo(psz) {
-        window.location.assign("jarmualap.php?inf="+psz);
+  window.location.assign("jarmualap.php?inf="+psz);
     }
+
+function toIndex() {
+  window.location.assign("index.php");
+}
 
 
 </script>
