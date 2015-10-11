@@ -47,6 +47,7 @@ function toIndex() {
 }
 
 
+
 </script>
 </head>
 <body>
@@ -171,6 +172,10 @@ public function infoTableCaptionDiagram($caption) {
 
 public function setBackRef() {
   $_SESSION['backRef']=basename($_SERVER['SCRIPT_NAME']);
+}
+
+public function askBeforeNavigation() {
+  echo '<script>window.onbeforeunload = function() { return "Az eddigi munka elveszhet.\nNavigálásra használja a lap menügombjait!"; };</script>';
 }
 
 } // END Html

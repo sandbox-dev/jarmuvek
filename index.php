@@ -35,6 +35,7 @@ if (isset($_SESSION['userAuth']) && $_SESSION['userAuth'] >=8 ) {
 // 2. sor menü
 $menu = array (
 'Új jármű rögzítése'=>'ujjarmu.php',
+'Járműtípusok kezelése'=>'ujtipus.php',
 'Alapjelszó beállítása'=>'alapjelszo.php',
 );
 $h->btnMenu($menu);

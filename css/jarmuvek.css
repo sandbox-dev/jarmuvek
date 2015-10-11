@@ -123,11 +123,14 @@
     background-color:#004900;
     color:#FFFFFF;   
   }
-  .jmu-info-table {
+  .jmu-info-table, .jmu-data-table, .tbl-ujjmu {
     margin:1em auto;
     font-size:16px;
     font-family:Helvetica, Lucidia, sans-serif 
   }
+  .jmu-info-table tr:nth-child(even) {background-color:#FFFFFF;}
+  .jmu-info-table tr:nth-child(odd ) {background-color:#e8e8e8;}
+  
   caption {
     border-left:1px solid #000;
     border-top:1px solid #000;
@@ -150,6 +153,12 @@
   }
   .tdl {
     text-align:left;
+  }
+  .tdrb {
+    text-align:right;
+    font-weight:bold;
+    padding-left:1em;
+    padding-right:0.5em;
   }
   .link-info {
     background-color:#003E7A;

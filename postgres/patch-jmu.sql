@@ -82,3 +82,36 @@ create table jarmu_alap (
   id integer default nextval('seq_jarmu_alap') primary key,
   constraint letezo_pp_vagy_sd_rendelesek unique(sd_al,sd_op,pp_al,pp_op)
 )with oids;
+
+-- uj tipus funkció
+create or replace function ujtipus(text) returns integer as
+$$
+declare
+begin
+  perform id from tipus where upper($1)=upper(id);
+  if not found then
+    insert into tipus values(upper($1));
+    return 1;
+  else
+    return 0;
+  end if;
+end;
+$$
+language plpgsql;
+
+create or replace function tipus_torlese(text) returns integer as
+$$
+declare
+begin
+  perform distinct jarmutipus,tipus.id from jarmu_alap right join tipus 
+    on(jarmutipus=tipus.id) where jarmutipus is null and tipus.id=upper($1);
+  if found then
+    delete from tipus where upper(id)=upper($1);
+    return 1;
+  else 
+    return 0;
+  end if;
+end;
+$$
+language plpgsql;
+

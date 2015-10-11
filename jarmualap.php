@@ -10,7 +10,6 @@ if(!isset($_SESSION['backRef'])) {
   $_SESSION['backRef'] = "index.php";
 }
 
-
 // Html példány:
 $h = new Html();
 
@@ -25,18 +24,21 @@ if(isset($_GET['inf']) && trim($_GET['inf']) != '') {
         $sql =  "select jarmutipus,ev,sorszam,psz,esz,sd_al,sd_op,pp_al,pp_op,";
         $sql .= "erkezett,munkabavetel,allapotfelvetel,reszatvetel,vegatvetel,";
         $sql .= "hazaadas,szamlazas,megjegyzes,terv_atfutasi_ido,";
-        $sql .= "vegatvetel-erkezett as atf1, hazaadas-erkezett as atf2 ";
+        $sql .= "vegatvetel-erkezett as atf1, hazaadas-erkezett as atf2,id ";
         $sql .= "from jarmu_alap where id=$id";
         $res = $pg->query($sql);
         // Van-e visszaadott sor
         $count = $res->rowCount();
         if ($res) {
             if ($count) {
+        
                 $row = $res->fetch(PDO::FETCH_BOTH);
                 $h->msgOk("$row[3]&nbsp;&mdash;&nbsp;$row[0] alapadatok:");
                 
-                echo "<table class='jmu-info-table' border=1 style='border-collapse:collapse'>";
+                echo "<table class='jmu-data-table' border=1 style='border-collapse:collapse'>";
                 echo "<caption>";
+                
+                
                 $h->btnMenu(array("Vissza"=>"$_SESSION[backRef]"));
                 echo "</caption>";
                 //<tr><td class='tdr5p-b'>Járműtípus:</td><td class='tdc5p'>$row[0]</td></tr>
@@ -59,7 +61,22 @@ if(isset($_GET['inf']) && trim($_GET['inf']) != '') {
                 <tr><td class='tdr5p-b'>Megjegyzés</td><td class='tdc5p'>$row[16]</td></tr>
                 <tr><td class='tdr5p-b'>Tervezett átfutási idő</td><td class='tdc5p'>$row[17]</td></tr>
                 <tr><td class='tdr5p-b'>Érkezéstől végátvételig [nap]</td><td class='tdc5p'>$row[18]</td></tr>
-                <tr><td class='tdr5p-b'>Érkezéstől hazaadásig [nap]</td><td class='tdc5p'>$row[19]</td></tr>
+                <tr><td class='tdr5p-b'>Érkezéstől hazaadásig [nap]</td><td class='tdc5p'>$row[19]</td></tr>";
+                if (isset($_SESSION['userAuth']) && $_SESSION['userAuth'] >=8 ) {
+                  echo "
+                  <tfoot>
+                  <tr class='tdr5p-b'>
+                  <td>
+                    Adatok módosítása
+                  </td>
+                  <td>";
+                    $h->btnMenu(array("Módosítás"=>"jmuadatmodositas.php?id=$row[20]"));
+                  echo "
+                  </td>
+                  </tr>
+                  </tfoot>";
+                }
+                echo "
                 </table>";
                 echo "<p>";
                   $h->btnMenu(array("Új jármű választás"=>"jarmualap.php"));
