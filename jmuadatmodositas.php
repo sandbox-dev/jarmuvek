@@ -126,7 +126,7 @@ echo "</caption>
 </tr>
 <tr>
 <td class='tdrb'><label for='esz'>Egyedi szám</td>
-<td><input type='text' name='esz' maxlength='10' placeholder='Nem kötelező!' value='$row[4]' />
+<td><input type='text' name='esz' maxlength='25' placeholder='Nem kötelező!' value='$row[4]' />
 </label></td>
 </tr>
 <tr>
