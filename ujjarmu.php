@@ -42,7 +42,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Mentés') {
   ($_POST['hazaadas'] == '') ? $sql .= "NULL," : $sql .= "'$_POST[hazaadas]',";
   ($_POST['szamlazas'] == '') ? $sql .= "NULL," : $sql .= "'$_POST[szamlazas]',";
   ($_POST['megjegyzes'] == '') ? $sql .= "NULL," : $sql .= "'$_POST[megjegyzes]',";
-  ($_POST['tervido'] == '') ? $sql .= "NULL" : $sql .= $_POST[tervido];
+  ($_POST['tervido'] == '') ? $sql .= "NULL" : $sql .= "$_POST[tervido]";
   $sql .= ")";
   $res = $pg->exec($sql);
   if ($res) {
